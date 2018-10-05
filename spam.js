@@ -23,6 +23,8 @@ class JB {
 		JB.ConsoleWrite(...a);
 		JB.ConsoleWrite("\n");
 	}
+	
+	static ConsoleReadLine(q) { return prompt(q || "Input") || ""; }
 }
 
 
@@ -101,7 +103,7 @@ class qstr{
 				}); //Function it_check() check=Memory[pointer] End Function;     itmap.add "CHECK",it_check  ' If the current value is 0, skip the next valid command
             this.add("NEXT", () => { JB.ConsoleWriteLine(); }); //Function it_next()  Print; End Function             itmap.add "NEXT",it_next
             this.add("VIAGRA",  () => {
-                let i = Math.abs(qstr.ToLong(Console.ReadLine()));
+                let i = Math.abs(qstr.ToLong(JB.ConsoleReadLine("Please enter a number:")));
                 let b = BitConverter.GetBytes(i);
                 let e = 1;
                 for (let ak = 1; ak < 7; ak++)
@@ -117,9 +119,9 @@ class qstr{
                 }
             });
             this.add("DIPLOMA", () => {
-                let s = JB.ConsoleReadLine();
-                let tp = Pointer;
-                for (let ak = 0; ak < s.Length; ak++)
+                let s = JB.ConsoleReadLine("Please enter a string:");
+                let tp = this.Pointer;
+                for (let ak = 0; ak < s.length; ak++)
                 {
                     if (SpamProgrammingLanguage.MaxString >= 0 && ak >= SpamProgrammingLanguage.MaxString) break;
                     tp++;
