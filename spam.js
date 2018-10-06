@@ -121,9 +121,12 @@ class qstr{
             this.add("DIPLOMA", () => {
                 let s = JB.ConsoleReadLine("Please enter a string:");
                 let tp = this.Pointer;
+                JB.Chat(`${s} len:${s.length}`);
                 for (let ak = 0; ak < s.length; ak++)
                 {
                     if (SpamProgrammingLanguage.MaxString >= 0 && ak >= SpamProgrammingLanguage.MaxString) break;
+                    this.Memory[tp]=s.charCodeAt(ak);
+                    while(this.Memory[tp]>255) this.Memory[tp]-=256; // It's only bytes after all. Sorry UNICODE junkies, this is what you get for using a byte-only esotoric language :P
                     tp++;
                     if (tp >= this.Memory.Length) tp = 0;
                 }
